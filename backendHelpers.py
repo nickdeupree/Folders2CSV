@@ -50,3 +50,17 @@ class BackendHelpers:
             writer.writerow(['Folder Name', 'Drive Name'])
             for folder, drive in foldersAndDrives:
                 writer.writerow([folder, BackendHelpers.stripDriveName(drive)])
+
+    @staticmethod
+    def getCsvContents(csv_file_path):
+        with open(csv_file_path, 'r', newline="") as csvfile:
+            reader = csv.reader(csvfile)
+            next(reader, None) # Skip header
+            data = []
+            for row in reader:
+                folder_name = row[0].strip()
+                drive_name = row[1].strip()
+                if folder_name and drive_name:
+                    data.append((folder_name, drive_name))
+            return data
+    

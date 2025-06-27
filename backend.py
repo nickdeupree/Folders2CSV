@@ -5,6 +5,25 @@ from backendHelpers import BackendHelpers
 
 class Folders2CSVBackend:
     """Backend interface for processing Audio Archive drives"""
+
+    @staticmethod
+    def get_csv_contents(csv_file_path):
+        """
+        Get contents of the CSV file
+        
+        Args:
+            csv_file_path (str): Path to the CSV file
+            
+        Returns:
+            list: List of tuples containing folder names and drive names
+        """
+        if not os.path.exists(csv_file_path):
+            return []
+        try:
+            return BackendHelpers.getCsvContents(csv_file_path)
+        except Exception as e:
+            print(f"Error reading CSV file: {e}")
+            return []
     
     @staticmethod
     def get_available_drives():

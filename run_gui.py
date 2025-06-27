@@ -14,7 +14,6 @@ try:
     from gui import main
     
     if __name__ == "__main__":
-        print("Starting Folders2CSV GUI Application...")
         main()
         
 except ImportError as e:
